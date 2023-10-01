@@ -5,7 +5,8 @@ export const Nav = () => {
   return (
     <div>
       <Link to={"/"}>Home</Link>
-      <Link to={"/sales"}>Ventas</Link>
+      <Link to={"/tienda"}>Tienda</Link>
+      <Link to={"/cita"}>Reservar Cita</Link>
     </div>
   );
 };

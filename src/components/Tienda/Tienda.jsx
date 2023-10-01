@@ -1,11 +1,11 @@
 import React from "react";
 import { Nav } from "../Nav/Nav";
 
-export const Sales = () => {
+export const Tienda = () => {
   return (
     <div>
       <Nav />
-      Sales
+      Tienda
     </div>
   );
 };
