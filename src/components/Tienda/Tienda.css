@@ -4,3 +4,13 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+.container_carrito{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container_carrito_tabla{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

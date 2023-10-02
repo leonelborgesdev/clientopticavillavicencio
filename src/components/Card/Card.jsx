@@ -30,8 +30,7 @@ export const Card = ({ product }) => {
         >
           Comprar
         </button>
-        <button>In Car</button>
-        <button>Favorite</button>
+        <button>Favorito</button>
       </div>
     </div>
   );

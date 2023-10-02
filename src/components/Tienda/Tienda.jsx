@@ -10,19 +10,33 @@ export const Tienda = () => {
   return (
     <div>
       <div className="container_nav_tienda">
-        <Link to="/home">Volver</Link>
+        <Link to="/">Volver</Link>
       </div>
       <div className="container_carrito">
-        {itemCar.list.map((item) => {
-          return (
-            <div>
-              <h3>Descripcion</h3>
-              <h4>{item.product.descripcion}</h4>
-              <h3>Precio</h3>
-              <h4>{item.product.precio}</h4>
-            </div>
-          );
-        })}
+        <div className="container_carrito_tabla">
+          <table border={"1px"}>
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>Descripcion</th>
+                <th>Marca</th>
+                <th>Costo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {itemCar.list.map((item, index) => {
+                return (
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{item.product.descripcion}</td>
+                    <td>{item.product.marca}</td>
+                    <td>{item.product.precio}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
       <div className="container_products">
         <h1>Tienda</h1>

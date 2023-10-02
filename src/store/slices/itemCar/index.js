@@ -13,7 +13,3 @@ export const itemCarSlice = createSlice({
 export const { setItemlist } = itemCarSlice.actions;
 
 export default itemCarSlice.reducer;
-
-export const VerificarItem = (itemCar) => {
-  return false;
-};
