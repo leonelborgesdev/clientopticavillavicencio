@@ -11,31 +11,45 @@ export const Tienda = () => {
     <div>
       <div className="container_nav_tienda">
         <Link to="/">Volver</Link>
+        <h3>Orden</h3>
+        <select name="orden">
+          <option value="">Alfabetico</option>
+          <option value="">Descripcion</option>
+          <option value="">Precio</option>
+        </select>
+        <h3>Buscar</h3>
+        <select name="select">
+          <option value="">Descripcion</option>
+          <option value="">Marca</option>
+          <option value="">Precio</option>
+        </select>
       </div>
       <div className="container_carrito">
         <div className="container_carrito_tabla">
-          <table border={"1px"}>
-            <thead>
-              <tr>
-                <th>N°</th>
-                <th>Descripcion</th>
-                <th>Marca</th>
-                <th>Costo</th>
-              </tr>
-            </thead>
-            <tbody>
-              {itemCar.list.map((item, index) => {
-                return (
-                  <tr>
-                    <td>{index + 1}</td>
-                    <td>{item.product.descripcion}</td>
-                    <td>{item.product.marca}</td>
-                    <td>{item.product.precio}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          {itemCar.list.length > 0 && (
+            <table border={"1px"}>
+              <thead>
+                <tr>
+                  <th>N°</th>
+                  <th>Descripcion</th>
+                  <th>Marca</th>
+                  <th>Costo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {itemCar.list.map((item, index) => {
+                  return (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{item.product.descripcion}</td>
+                      <td>{item.product.marca}</td>
+                      <td>{item.product.precio}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
       <div className="container_products">
