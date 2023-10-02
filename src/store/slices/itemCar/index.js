@@ -7,9 +7,12 @@ export const itemCarSlice = createSlice({
     setItemlist: (state, action) => {
       state.list.push(action.payload);
     },
+    deleteItemlist: (state, action) => {
+      state.list.splice(action.payload, 1);
+    },
   },
 });
 
-export const { setItemlist } = itemCarSlice.actions;
+export const { setItemlist, deleteItemlist } = itemCarSlice.actions;
 
 export default itemCarSlice.reducer;

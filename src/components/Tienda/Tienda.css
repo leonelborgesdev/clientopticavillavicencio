@@ -1,5 +1,10 @@
 .container_nav_tienda{
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    gap: 10px;
+    height: 40px;
 }
 .contanier_cards{
     display: flex;
@@ -11,9 +16,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+.container_total{
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+}
+.container_total div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
 }
 .container_carrito_tabla{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.bt_carrito{
+    margin: 5px;
 }

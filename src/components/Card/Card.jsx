@@ -6,7 +6,6 @@ import { setItemlist } from "../../store/slices/itemCar";
 export const Card = ({ product }) => {
   const dispatch = useDispatch();
   const handleComprar = (itemcar) => {
-    console.log("llego");
     dispatch(setItemlist(itemcar));
   };
   return (
