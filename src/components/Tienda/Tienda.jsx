@@ -8,6 +8,7 @@ import { deleteItemlist } from "../../store/slices/itemCar";
 export const Tienda = () => {
   const products = useSelector((state) => state.products);
   const itemCar = useSelector((state) => state.itemCar);
+  const car = useSelector((state) => state.car);
   const [tipoDescuento, setTipoDescuento] = useState(true);
   const dispatch = useDispatch();
   const handelEliminar = (posicion) => {
@@ -89,11 +90,7 @@ export const Tienda = () => {
             </div>
             <div>
               <h4>Total: </h4>
-              <h4>
-                {itemCar.list.reduce((previous, current) => {
-                  return previous + current.product.precio;
-                }, 0)}
-              </h4>
+              <h4>{car.obj.suma}</h4>
             </div>
           </div>
         </div>

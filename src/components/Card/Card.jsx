@@ -2,11 +2,29 @@ import React, { useState } from "react";
 import "./Card.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setItemlist } from "../../store/slices/itemCar";
+import { setCarObj } from "../../store/slices/Car";
 
 export const Card = ({ product }) => {
   const dispatch = useDispatch();
+  const car = useSelector((state) => state.car);
+  const itemCar = useSelector((state) => state.itemCar);
   const handleComprar = (itemcar) => {
     dispatch(setItemlist(itemcar));
+    handleCreateCar(product);
+  };
+  const handleCreateCar = (product) => {
+    console.log("entro");
+    if (Object.keys(car.obj).length >= 0) {
+      dispatch(
+        setCarObj({
+          descuento: 0,
+          tipo_descuento: "%",
+          suma: car.obj.suma ? car.obj.suma + product.precio : product.precio,
+        })
+      );
+      console.log("entro3");
+    }
+    console.log(car);
   };
   return (
     <div className="card_product">
