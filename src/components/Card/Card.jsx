@@ -14,7 +14,7 @@ export const Card = ({ product }) => {
   };
   const handleCreateCar = (product) => {
     console.log("entro");
-    if (Object.keys(car.obj).length >= 0) {
+    if (Object.keys(car.obj).length === 0) {
       dispatch(
         setCarObj({
           descuento: 0,
@@ -23,6 +23,16 @@ export const Card = ({ product }) => {
         })
       );
       console.log("entro3");
+    }
+    if (Object.keys(car.obj).length > 0) {
+      dispatch(
+        setCarObj({
+          ...car.obj,
+          ["suma"]: car.obj.suma
+            ? car.obj.suma + product.precio
+            : product.precio,
+        })
+      );
     }
     console.log(car);
   };

@@ -4,6 +4,7 @@ import { Card } from "../Card/Card";
 import "./Tienda.css";
 import { Link } from "react-router-dom";
 import { deleteItemlist } from "../../store/slices/itemCar";
+import { setCarObj } from "../../store/slices/Car";
 
 export const Tienda = () => {
   const products = useSelector((state) => state.products);
@@ -14,11 +15,18 @@ export const Tienda = () => {
   const handelEliminar = (posicion) => {
     dispatch(deleteItemlist(posicion));
   };
+  const handleChangeDiscount = (e) => {
+    const { value } = e.target;
+    dispatch(setCarObj({ ...car.obj, ["descuento"]: value }));
+    console.log(e.target.value);
+  };
   const handeltipoDescuento = () => {
     if (tipoDescuento) {
       setTipoDescuento(false);
+      dispatch(setCarObj({ ...car.obj, ["tipo_descuento"]: "n" }));
     } else {
       setTipoDescuento(true);
+      dispatch(setCarObj({ ...car.obj, ["tipo_descuento"]: "%" }));
     }
   };
   return (
@@ -82,15 +90,27 @@ export const Tienda = () => {
           <div className="container_total">
             <div>
               <h4>Descuento: </h4>
-              <input type="text" />
+              <input
+                type="text"
+                defaultValue={car.obj.descuento}
+                onChange={handleChangeDiscount}
+              />
               <button onClick={() => handeltipoDescuento()}>
                 {tipoDescuento ? "%" : "n"}
               </button>
-              {/* <h4>{descuento}</h4> */}
+              <h4>
+                {car.obj.tipo_descuento === "%"
+                  ? car.obj.suma * (car.obj.descuento / 100)
+                  : car.obj.descuento}
+              </h4>
             </div>
             <div>
               <h4>Total: </h4>
-              <h4>{car.obj.suma}</h4>
+              <h4>
+                {car.obj.tipo_descuento === "%"
+                  ? car.obj.suma - car.obj.suma * (car.obj.descuento / 100)
+                  : car.obj.suma - car.obj.descuento}
+              </h4>
             </div>
           </div>
         </div>
