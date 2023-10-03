@@ -18,14 +18,14 @@ export const Card = ({ product }) => {
       <h2>{product.precio}</h2>
       <div>
         <button
-          onClick={() =>
+          onClick={() => {
             handleComprar({
               id_product: product.id,
               amount: 1,
               subtotal: product.precio,
               product,
-            })
-          }
+            });
+          }}
         >
           Comprar
         </button>

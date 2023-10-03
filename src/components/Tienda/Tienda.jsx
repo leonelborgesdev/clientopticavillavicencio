@@ -8,12 +8,18 @@ import { deleteItemlist } from "../../store/slices/itemCar";
 export const Tienda = () => {
   const products = useSelector((state) => state.products);
   const itemCar = useSelector((state) => state.itemCar);
-  const [descuento, setDescuento] = useState(0);
+  const [tipoDescuento, setTipoDescuento] = useState(true);
   const dispatch = useDispatch();
   const handelEliminar = (posicion) => {
     dispatch(deleteItemlist(posicion));
   };
-  //   const handleDescuento=()=>
+  const handeltipoDescuento = () => {
+    if (tipoDescuento) {
+      setTipoDescuento(false);
+    } else {
+      setTipoDescuento(true);
+    }
+  };
   return (
     <div>
       <div className="container_nav_tienda">
@@ -76,7 +82,10 @@ export const Tienda = () => {
             <div>
               <h4>Descuento: </h4>
               <input type="text" />
-              <button>%</button>
+              <button onClick={() => handeltipoDescuento()}>
+                {tipoDescuento ? "%" : "n"}
+              </button>
+              {/* <h4>{descuento}</h4> */}
             </div>
             <div>
               <h4>Total: </h4>
