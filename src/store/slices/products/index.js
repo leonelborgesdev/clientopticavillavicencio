@@ -50,3 +50,7 @@ export const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
+
+export const itemCarboolean = (itemCar) => {
+  return false;
+};

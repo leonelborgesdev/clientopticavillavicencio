@@ -7,7 +7,6 @@ import { setCarObj } from "../../store/slices/Car";
 export const Card = ({ product }) => {
   const dispatch = useDispatch();
   const car = useSelector((state) => state.car);
-  const itemCar = useSelector((state) => state.itemCar);
   const handleComprar = (itemcar) => {
     dispatch(setItemlist(itemcar));
     handleCreateCar(product);
