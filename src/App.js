@@ -3,6 +3,7 @@ import "./App.css";
 import { Home } from "./components/Home/Home";
 import { Tienda } from "./components/Tienda/Tienda";
 import { Citas } from "./components/Citas/Citas";
+import { ReservarCita } from "./components/ReservarCita/ReservarCita";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tienda" element={<Tienda />} />
-          <Route path="/cita" element={<Citas />} />
+          <Route path="/citas" element={<Citas />} />
+          <Route path="/cita" element={<ReservarCita />} />
         </Routes>
       </BrowserRouter>
     </div>

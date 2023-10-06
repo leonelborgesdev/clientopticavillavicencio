@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = { obj: {} };
 
 export const clientSlice = createSlice({
   name: "client",
   initialState,
   reducers: {
     setClientObj: (state, action) => {
-      state = action.payload;
+      state.obj = action.payload;
     },
   },
 });
