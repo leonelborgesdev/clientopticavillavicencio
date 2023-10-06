@@ -56,6 +56,8 @@ export const Tienda = () => {
             <h3>{client.obj.nombre}</h3>
             <h3>Cel/Telf:</h3>
             <h3>{client.obj.celular}</h3>
+            <button>Clientes</button>
+            <button>Receta</button>
           </div>
           <div className="container_carrito_tabla">
             <table border={"1px"}>
