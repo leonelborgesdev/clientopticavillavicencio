@@ -18,6 +18,12 @@
     justify-content: center;
     flex-direction: column;
 }
+.container_carrito_cliente{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
 .container_total{
     display: flex;
     flex-direction: row;
