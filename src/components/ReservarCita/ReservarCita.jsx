@@ -23,9 +23,9 @@ export const ReservarCita = () => {
         <h2>Cliente</h2>
         <div>
           <h4>Nombre:</h4>
-          <input type="text" name="Nombre" onChange={handleChange} />
+          <input type="text" name="nombre" onChange={handleChange} />
           <h4>Cel/Tel:</h4>
-          <input type="text" name="Celular" onChange={handleChange} />
+          <input type="text" name="celular" onChange={handleChange} />
         </div>
       </div>
       <div>
