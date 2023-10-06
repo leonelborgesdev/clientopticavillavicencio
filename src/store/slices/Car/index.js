@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const CarSlice = createSlice({
-  name: "Car",
+export const carSlice = createSlice({
+  name: "car",
   initialState: { obj: {} },
   reducers: {
     setCarObj: (state, action) => {
@@ -10,6 +10,6 @@ export const CarSlice = createSlice({
   },
 });
 
-export const { setCarObj } = CarSlice.actions;
+export const { setCarObj } = carSlice.actions;
 
-export default CarSlice.reducer;
+export default carSlice.reducer;

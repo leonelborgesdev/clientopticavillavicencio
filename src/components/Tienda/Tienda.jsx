@@ -9,6 +9,7 @@ import { setCarObj } from "../../store/slices/Car";
 export const Tienda = () => {
   const products = useSelector((state) => state.products);
   const itemCar = useSelector((state) => state.itemCar);
+  const client = useSelector((state) => state.client);
   const car = useSelector((state) => state.car);
   const [tipoDescuento, setTipoDescuento] = useState(true);
   const dispatch = useDispatch();
@@ -50,6 +51,12 @@ export const Tienda = () => {
       </div>
       {itemCar.list.length > 0 && (
         <div className="container_carrito">
+          <div className="container_carrito_cliente">
+            <h3>Nombre:</h3>
+            <h3>{client.obj.nombre}</h3>
+            <h3>Cel/Telf:</h3>
+            <h3>{client.obj.celular}</h3>
+          </div>
           <div className="container_carrito_tabla">
             <table border={"1px"}>
               <thead>

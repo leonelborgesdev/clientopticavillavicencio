@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setClientObj } from "../../store/slices/client";
 
 export const ReservarCita = () => {
   const [cliente, setCliente] = useState({});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
@@ -14,6 +15,7 @@ export const ReservarCita = () => {
 
   const handleReservar = () => {
     dispatch(setClientObj(cliente));
+    navigate("/");
   };
   return (
     <div>

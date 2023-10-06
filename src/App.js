@@ -4,6 +4,7 @@ import { Home } from "./components/Home/Home";
 import { Tienda } from "./components/Tienda/Tienda";
 import { Citas } from "./components/Citas/Citas";
 import { ReservarCita } from "./components/ReservarCita/ReservarCita";
+import { Cliente } from "./components/Cliente/Cliente";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/tienda" element={<Tienda />} />
           <Route path="/citas" element={<Citas />} />
           <Route path="/cita" element={<ReservarCita />} />
+          <Route path="/cliente" element={<Cliente />} />
         </Routes>
       </BrowserRouter>
     </div>
