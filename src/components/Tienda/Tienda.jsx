@@ -12,13 +12,13 @@ export const Tienda = () => {
   const car = useSelector((state) => state.car);
   const [tipoDescuento, setTipoDescuento] = useState(true);
   const dispatch = useDispatch();
-  const handelEliminar = (posicion) => {
+  const handelEliminar = (posicion, precioItem) => {
     dispatch(deleteItemlist(posicion));
+    dispatch(setCarObj({ ...car.obj, ["suma"]: car.obj.suma - precioItem }));
   };
   const handleChangeDiscount = (e) => {
     const { value } = e.target;
     dispatch(setCarObj({ ...car.obj, ["descuento"]: value }));
-    console.log(e.target.value);
   };
   const handeltipoDescuento = () => {
     if (tipoDescuento) {
@@ -72,11 +72,13 @@ export const Tienda = () => {
                       <td>{item.amount}</td>
                       <td>{item.product.precio * item.amount}</td>
                       <td>
-                        <button className="bt_carrito">+</button>
                         <button className="bt_carrito">-</button>
+                        <button className="bt_carrito">+</button>
                         <button
                           className="bt_carrito"
-                          onClick={() => handelEliminar(index)}
+                          onClick={() =>
+                            handelEliminar(index, item.product.precio)
+                          }
                         >
                           x
                         </button>
