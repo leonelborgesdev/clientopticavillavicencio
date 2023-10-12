@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import "./Receta.css";
 
 export const Receta = () => {
   const client = useSelector((state) => state.client);
@@ -12,12 +13,14 @@ export const Receta = () => {
   return (
     <div>
       <Link to="/tienda">Volver</Link>
-      <div>
+      <div className="container_recipe_client">
         <h1>Cliente</h1>
-        <h3>Nombre:</h3>
-        <h3>{client.obj.nombre}</h3>
-        <h3>Tel/Cel.:</h3>
-        <h3>{client.obj.nombre}</h3>
+        <div className="dates_recipe_cliente">
+          <h3>Nombre:</h3>
+          <h3>{client.obj.nombre}</h3>
+          <h3>Tel/Cel.:</h3>
+          <h3>{client.obj.nombre}</h3>
+        </div>
       </div>
       <div>
         <h1>Receta</h1>

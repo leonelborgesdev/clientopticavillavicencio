@@ -1,0 +1,7 @@
+.dates_recipe_cliente{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
