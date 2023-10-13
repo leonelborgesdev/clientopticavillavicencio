@@ -5,3 +5,9 @@
     flex-direction: row;
     gap: 1rem;
 }
+.container_datos_receta{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+}
