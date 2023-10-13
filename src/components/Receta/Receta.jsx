@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./Receta.css";
 import { setRecipeList } from "../../store/slices/recipes";
+import { setRecipeObj } from "../../store/slices/recipe";
 
 export const Receta = () => {
   const client = useSelector((state) => state.client);
@@ -17,6 +18,7 @@ export const Receta = () => {
   const handleSave = () => {
     // setRecipe({ ...recipe, ["id_client"]: client.obj.id });
     console.log(recipe);
+    dispatch(setRecipeObj(recipe));
     dispatch(setRecipeList(recipe));
     navigate("/tienda");
   };
@@ -59,7 +61,7 @@ export const Receta = () => {
         <span>Cil.</span>
         <input type="text" name="cil_oi_lejos" onChange={handleChange} />
         <span>Eje.</span>
-        <input type="text" name="cil_oi_eje" onChange={handleChange} />
+        <input type="text" name="eje_oi_lejos" onChange={handleChange} />
 
         <h3>Cerca</h3>
 

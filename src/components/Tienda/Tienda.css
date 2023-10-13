@@ -1,3 +1,9 @@
+#carritoNoVisible{
+    height: 0px;
+}
+.icono_carrito{
+    cursor: pointer;
+}
 .container_nav_tienda{
     display: flex;
     justify-content: center;
@@ -17,6 +23,25 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.container_carrito_receta{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.container_carrito_receta_doc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+.container_receta_datos_cerca, .container_receta_datos_cerca div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem
 }
 .container_carrito_cliente{
     display: flex;

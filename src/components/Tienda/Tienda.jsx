@@ -6,11 +6,42 @@ import { Link, useNavigate } from "react-router-dom";
 import { deleteItemlist } from "../../store/slices/itemCar";
 import { setCarObj } from "../../store/slices/Car";
 
+const tabla_cerca = (recipe) => {
+  return (
+    <table border={"1px"}>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Esf.</th>
+          <th>Cil.</th>
+          <th>Eje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Od.</td>
+          <td>{recipe.obj.esf_od_cerca}</td>
+          <td>{recipe.obj.cil_od_cerca}</td>
+          <td>{recipe.obj.eje_od_cerca}</td>
+        </tr>
+        <tr>
+          <td>Oi.</td>
+          <td>{recipe.obj.esf_oi_cerca}</td>
+          <td>{recipe.obj.cil_oi_cerca}</td>
+          <td>{recipe.obj.eje_oi_cerca}</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+
 export const Tienda = () => {
   const products = useSelector((state) => state.products);
   const itemCar = useSelector((state) => state.itemCar);
   const client = useSelector((state) => state.client);
+  const recipe = useSelector((state) => state.recipe);
   const car = useSelector((state) => state.car);
+  const [carritoVisible, setCarritoVisible] = useState(false);
   const [tipoDescuento, setTipoDescuento] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,6 +62,13 @@ export const Tienda = () => {
       dispatch(setCarObj({ ...car.obj, ["tipo_descuento"]: "%" }));
     }
   };
+  const handleCarVisible = () => {
+    if (carritoVisible) {
+      setCarritoVisible(false);
+    } else {
+      setCarritoVisible(true);
+    }
+  };
   return (
     <div>
       <div className="container_nav_tienda">
@@ -49,15 +87,22 @@ export const Tienda = () => {
         </select>
         <input type="text" />
         <button>Buscar</button>
+        <h2 className="icono_carrito" onClick={handleCarVisible}>
+          Carrito: {itemCar.list.length}
+        </h2>
       </div>
-      {itemCar.list.length > 0 && (
-        <div className="container_carrito">
+      {/* {itemCar.list.length > 0 && ( */}
+      {carritoVisible && itemCar.list.length > 0 && (
+        <div
+          className="container_carrito"
+          id={carritoVisible === true ? "carritoVisible" : "carritoNoVisible"}
+        >
           <div className="container_carrito_cliente">
             <h3>Nombre:</h3>
-            <h3>{client.obj.nombre}</h3>
+            <h3>{client.obj.nombre ? client.obj.nombre : "--"}</h3>
             <h3>Cel/Telf:</h3>
-            <h3>{client.obj.celular}</h3>
-            <button>Otro Cliente</button>
+            <h3>{client.obj.celular ? client.obj.celular : "--"}</h3>
+            <button>Buscar Cliente</button>
             <button
               onClick={() => {
                 navigate("/receta");
@@ -66,6 +111,69 @@ export const Tienda = () => {
               Receta
             </button>
           </div>
+          {Object.keys(recipe.obj).length > 0 && (
+            <div className="container_carrito_receta">
+              <h3>Receta:</h3>
+              <div className="container_carrito_receta_doc">
+                <h3>Doctor:</h3>
+                <h3>{recipe.obj.doctor}</h3>
+                <h3>Fecha:</h3>
+                <h3>{recipe.obj.fecha}</h3>
+              </div>
+              <h4>Lejos:</h4>
+              <table border={"1px"}>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Esf.</th>
+                    <th>Cil.</th>
+                    <th>Eje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Od.</td>
+                    <td>{recipe.obj.esf_od_lejos}</td>
+                    <td>{recipe.obj.cil_od_lejos}</td>
+                    <td>{recipe.obj.eje_od_lejos}</td>
+                  </tr>
+                  <tr>
+                    <td>Oi.</td>
+                    <td>{recipe.obj.esf_oi_lejos}</td>
+                    <td>{recipe.obj.cil_oi_lejos}</td>
+                    <td>{recipe.obj.eje_oi_lejos}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="container_receta_datos_cerca">
+                <div>
+                  <h4>Cerca:</h4>
+                </div>
+                {recipe.obj.add_cerca && (
+                  <div>
+                    <h4>Add:</h4>
+                    <h4>{recipe.obj.add_cerca}</h4>
+                  </div>
+                )}
+              </div>
+              {recipe.obj.esf_od_cerca ? (
+                tabla_cerca(recipe)
+              ) : recipe.obj.cil_od_cerca ? (
+                tabla_cerca(recipe)
+              ) : recipe.obj.eje_od_cerca ? (
+                tabla_cerca(recipe)
+              ) : recipe.obj.esf_oi_cerca ? (
+                tabla_cerca(recipe)
+              ) : recipe.obj.cil_oi_cerca ? (
+                tabla_cerca(recipe)
+              ) : recipe.obj.eje_oi_cerca ? (
+                tabla_cerca(recipe)
+              ) : (
+                <span>No se encontro datos</span>
+              )}
+            </div>
+          )}
+
           <div className="container_carrito_tabla">
             <table border={"1px"}>
               <thead>
