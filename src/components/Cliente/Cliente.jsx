@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setClientObj } from "../../store/slices/client";
 import { setCustomerList } from "../../store/slices/customers";
+import { v4 as uuid } from "uuid";
 
 export const Cliente = () => {
-  const [cliente, setCliente] = useState({ id: 4 });
+  const [cliente, setCliente] = useState({ id: uuid() });
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e) => {
