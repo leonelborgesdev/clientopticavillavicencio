@@ -108,35 +108,38 @@ export const Tienda = () => {
           id={carritoVisible === true ? "carritoVisible" : "carritoNoVisible"}
         >
           <div className="container_carrito_cliente">
-            <h3>Nombre:</h3>
-            <h3>{client.obj.nombre ? client.obj.nombre : "--"}</h3>
-            <h3>Cel/Telf:</h3>
-            <h3>{client.obj.celular ? client.obj.celular : "--"}</h3>
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                navigate("/clientes");
-              }}
-            >
-              Buscar Cliente
-            </button>
-            <button
-              className="btn btn-info"
-              onClick={() => {
-                navigate("/receta");
-              }}
-            >
-              Receta
-            </button>
+            <h2>Cliente</h2>
+            <div className="container_carrito_cliente_datos">
+              <h3>Nombre:</h3>
+              <h4>{client.obj.nombre ? client.obj.nombre : "--"}</h4>
+              <h4>Cel/Telf:</h4>
+              <h4>{client.obj.celular ? client.obj.celular : "--"}</h4>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  navigate("/clientes");
+                }}
+              >
+                Buscar Cliente
+              </button>
+              <button
+                className="btn btn-info"
+                onClick={() => {
+                  navigate("/receta");
+                }}
+              >
+                Receta
+              </button>
+            </div>
           </div>
           {Object.keys(recipe.obj).length > 0 && (
             <div className="container_carrito_receta">
               <h3>Receta:</h3>
               <div className="container_carrito_receta_doc">
-                <h3>Doctor:</h3>
-                <h3>{recipe.obj.doctor}</h3>
-                <h3>Fecha:</h3>
-                <h3>{recipe.obj.fecha}</h3>
+                <h4>Doctor:</h4>
+                <h4>{recipe.obj.doctor}</h4>
+                <h4>Fecha:</h4>
+                <h4>{recipe.obj.fecha}</h4>
               </div>
               <h4>Lejos:</h4>
               <table border={"1px"} className="table table-striped">
