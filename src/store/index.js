@@ -6,11 +6,13 @@ import clientReducer from "./slices/client";
 import recipeReducer from "./slices/recipe";
 import customersReducer from "./slices/customers";
 import recipesReducer from "./slices/recipes";
+import appointmentReducer from "./slices/appointments";
 
 export default configureStore({
   reducer: {
     client: clientReducer,
     customers: customersReducer,
+    appointment: appointmentReducer,
     recipe: recipeReducer,
     recipes: recipesReducer,
     products: productsReducer,
