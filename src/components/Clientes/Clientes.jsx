@@ -1,9 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { setClientObj } from "../../store/slices/client";
 
 export const Clientes = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const customers = useSelector((state) => state.customers);
+  const client = useSelector((state) => state.client);
+  const handleSelecClient = (client) => {
+    dispatch(setClientObj(client));
+    navigate("/tienda");
+  };
   return (
     <div>
       <Link to={"/tienda"}>Volver</Link>
@@ -20,10 +28,19 @@ export const Clientes = () => {
         <tbody>
           {customers.map((cliente, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{cliente.nombre}</td>
                 <td>{cliente.celular}</td>
+                <td>
+                  <input
+                    type="radio"
+                    name="client"
+                    checked={client.obj.id === cliente.id ? true : false}
+                    value={cliente.id}
+                    onClick={() => handleSelecClient(cliente)}
+                  />
+                </td>
                 <td></td>
               </tr>
             );

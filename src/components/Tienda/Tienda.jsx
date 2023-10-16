@@ -8,7 +8,7 @@ import { setCarObj } from "../../store/slices/Car";
 
 const tabla_cerca = (recipe) => {
   return (
-    <table border={"1px"}>
+    <table border={"1px"} className="table table-striped">
       <thead>
         <tr>
           <th></th>
@@ -75,13 +75,13 @@ export const Tienda = () => {
         <Link to="/">Volver</Link>
         <h3>Orden</h3>
         <select name="orden">
-          <option value="">Alfabetico</option>
-          <option value="">Descripcion</option>
-          <option value="">Precio</option>
+          <option value="">Ascendente</option>
+          <option value="">Descendente</option>
         </select>
         <h3>Buscar</h3>
         <select name="select">
           <option value="">Descripcion</option>
+          <option value="">Categoria</option>
           <option value="">Marca</option>
           <option value="">Precio</option>
         </select>
@@ -129,7 +129,7 @@ export const Tienda = () => {
                 <h3>{recipe.obj.fecha}</h3>
               </div>
               <h4>Lejos:</h4>
-              <table className="table table-striped">
+              <table border={"1px"} className="table table-striped">
                 <thead>
                   <tr>
                     <th></th>
@@ -183,7 +183,7 @@ export const Tienda = () => {
           )}
 
           <div className="container_carrito_tabla">
-            <table border="1px" className="table table-hover">
+            <table border="1px" className="table table-striped">
               <thead className="thead-dark">
                 <tr>
                   <th scope="col">N°</th>
