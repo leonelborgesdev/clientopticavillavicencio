@@ -183,7 +183,7 @@ export const Tienda = () => {
           )}
 
           <div className="container_carrito_tabla">
-            <table className="table table-hover">
+            <table border="1px" className="table table-hover">
               <thead className="thead-dark">
                 <tr>
                   <th scope="col">N°</th>
@@ -197,8 +197,8 @@ export const Tienda = () => {
               <tbody>
                 {itemCar.list.map((item, index) => {
                   return (
-                    <tr scope="row" key={index}>
-                      <td>{index + 1}</td>
+                    <tr key={index}>
+                      <th scope="row">{index + 1}</th>
                       <td>{item.product.descripcion}</td>
                       <td>{item.product.marca}</td>
                       <td>{item.amount}</td>

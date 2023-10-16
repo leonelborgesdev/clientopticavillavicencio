@@ -12,7 +12,6 @@ export const Card = ({ product }) => {
     handleCreateCar(product);
   };
   const handleCreateCar = (product) => {
-    console.log("entro");
     if (Object.keys(car.obj).length === 0) {
       dispatch(
         setCarObj({
@@ -21,7 +20,6 @@ export const Card = ({ product }) => {
           suma: car.obj.suma ? car.obj.suma + product.precio : product.precio,
         })
       );
-      console.log("entro3");
     }
     if (Object.keys(car.obj).length > 0) {
       dispatch(
@@ -33,7 +31,6 @@ export const Card = ({ product }) => {
         })
       );
     }
-    console.log(car);
   };
   return (
     <div className="card_product">
@@ -45,6 +42,7 @@ export const Card = ({ product }) => {
       <h2>{product.precio}</h2>
       <div>
         <button
+          className="btn btn-success"
           onClick={() => {
             handleComprar({
               id_product: product.id,
@@ -56,7 +54,7 @@ export const Card = ({ product }) => {
         >
           Comprar
         </button>
-        <button>Favorito</button>
+        <button className="btn btn-danger">Favorito</button>
       </div>
     </div>
   );
