@@ -12,7 +12,7 @@ export default configureStore({
   reducer: {
     client: clientReducer,
     customers: customersReducer,
-    appointment: appointmentReducer,
+    appointments: appointmentReducer,
     recipe: recipeReducer,
     recipes: recipesReducer,
     products: productsReducer,

@@ -22,7 +22,8 @@ export const ReservarCita = () => {
   };
   const handleReservar = () => {
     dispatch(setClientObj(cliente));
-    appointment["id_cliente"] = cliente.id;
+    // appointment["id_cliente"] = cliente.id;
+    appointment["id_cliente"] = cliente;
     dispatch(setAppointmentList(appointment));
     navigate("/");
   };
