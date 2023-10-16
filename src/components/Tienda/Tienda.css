@@ -10,7 +10,7 @@
     align-items: center;
     margin: 10px;
     gap: 10px;
-    height: 40px;
+    flex-wrap: wrap;
 }
 .contanier_cards{
     display: flex;
@@ -75,3 +75,4 @@
 .bt_carrito{
     margin: 5px;
 }
+
