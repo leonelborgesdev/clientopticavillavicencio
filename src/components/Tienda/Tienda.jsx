@@ -103,6 +103,7 @@ export const Tienda = () => {
             <h3>Cel/Telf:</h3>
             <h3>{client.obj.celular ? client.obj.celular : "--"}</h3>
             <button
+              className="btn btn-primary"
               onClick={() => {
                 navigate("/clientes");
               }}
@@ -110,6 +111,7 @@ export const Tienda = () => {
               Buscar Cliente
             </button>
             <button
+              className="btn btn-info"
               onClick={() => {
                 navigate("/receta");
               }}
@@ -202,10 +204,10 @@ export const Tienda = () => {
                       <td>{item.amount}</td>
                       <td>{item.product.precio * item.amount}</td>
                       <td>
-                        <button className="bt_carrito">-</button>
-                        <button className="bt_carrito">+</button>
+                        <button className="btn btn-danger">-</button>
+                        <button className="btn btn-success">+</button>
                         <button
-                          className="bt_carrito"
+                          className="btn btn-primary"
                           onClick={() =>
                             handelEliminar(index, item.product.precio)
                           }
@@ -227,7 +229,10 @@ export const Tienda = () => {
                 defaultValue={car.obj.descuento}
                 onChange={handleChangeDiscount}
               />
-              <button onClick={() => handeltipoDescuento()}>
+              <button
+                className="btn btn-warning"
+                onClick={() => handeltipoDescuento()}
+              >
                 {tipoDescuento ? "%" : "n"}
               </button>
               <h4>
