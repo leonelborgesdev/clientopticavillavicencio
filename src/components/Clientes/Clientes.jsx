@@ -8,8 +8,8 @@ export const Clientes = () => {
     <div>
       <Link to={"/tienda"}>Volver</Link>
       <h1>Clientes</h1>
-      <table className="table table-striped">
-        <thead>
+      <table className="table table-hover">
+        <thead className="thead-dark">
           <tr>
             <th scope="col">Nro</th>
             <th scope="col">Nombre</th>
