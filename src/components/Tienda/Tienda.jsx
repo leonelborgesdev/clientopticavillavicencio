@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card } from "../Card/Card";
 import "./Tienda.css";
 import { Link, useNavigate } from "react-router-dom";
-import { deleteItemlist } from "../../store/slices/itemCar";
+import { deleteItemlist, editItemAmount } from "../../store/slices/itemCar";
 import { setCarObj } from "../../store/slices/Car";
 
 const tabla_cerca = (recipe) => {
@@ -62,6 +62,17 @@ export const Tienda = () => {
       dispatch(setCarObj({ ...car.obj, ["tipo_descuento"]: "%" }));
     }
   };
+  const handleEditAmount = (operacion, amount, id) => {
+    if (operacion === "+") {
+      const newAmount = amount + 1;
+      dispatch(editItemAmount({ id, newAmount }));
+    } else {
+      const newAmount = amount - 1;
+      if (newAmount > 0) {
+        dispatch(editItemAmount({ id, newAmount }));
+      }
+    }
+  };
   const handleCarVisible = () => {
     if (carritoVisible) {
       setCarritoVisible(false);
@@ -88,11 +99,10 @@ export const Tienda = () => {
         <input type="text" />
         <button>Buscar</button>
         <h2 className="icono_carrito" onClick={handleCarVisible}>
-          Carrito: {itemCar.list.length}
+          Carrito: {itemCar.length}
         </h2>
       </div>
-      {/* {itemCar.list.length > 0 && ( */}
-      {carritoVisible && itemCar.list.length > 0 && (
+      {carritoVisible && itemCar.length > 0 && (
         <div
           className="container_carrito"
           id={carritoVisible === true ? "carritoVisible" : "carritoNoVisible"}
@@ -195,7 +205,7 @@ export const Tienda = () => {
                 </tr>
               </thead>
               <tbody>
-                {itemCar.list.map((item, index) => {
+                {itemCar.map((item, index) => {
                   return (
                     <tr key={index}>
                       <th scope="row">{index + 1}</th>
@@ -203,11 +213,25 @@ export const Tienda = () => {
                       <td>{item.product.marca}</td>
                       <td>{item.amount}</td>
                       <td>{item.product.precio * item.amount}</td>
-                      <td>
-                        <button className="btn btn-danger">-</button>
-                        <button className="btn btn-success">+</button>
+                      <td className="container_item_buttoms">
                         <button
-                          className="btn btn-primary"
+                          className="btn btn-danger btn-sm"
+                          onClick={() =>
+                            handleEditAmount("-", item.amount, item.id)
+                          }
+                        >
+                          -
+                        </button>
+                        <button
+                          className="btn btn-success btn-sm"
+                          onClick={() =>
+                            handleEditAmount("+", item.amount, item.id)
+                          }
+                        >
+                          +
+                        </button>
+                        <button
+                          className="btn btn-primary btn-sm"
                           onClick={() =>
                             handelEliminar(index, item.product.precio)
                           }

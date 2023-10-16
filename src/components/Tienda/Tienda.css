@@ -36,6 +36,11 @@
     flex-direction: row;
     gap: 1rem;
 }
+.container_item_buttoms{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
 .container_receta_datos_cerca, .container_receta_datos_cerca div{
     display: flex;
     align-items: center;

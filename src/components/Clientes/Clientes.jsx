@@ -36,7 +36,7 @@ export const Clientes = () => {
                   <input
                     type="radio"
                     name="client"
-                    checked={client.obj.id === cliente.id ? true : false}
+                    defaultChecked={client.obj.id === cliente.id ? true : false}
                     value={cliente.id}
                     onClick={() => handleSelecClient(cliente)}
                   />

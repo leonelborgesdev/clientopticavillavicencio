@@ -1,18 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { initializeConnect } from "react-redux/es/components/connect";
+
+const initialState = [];
 
 export const itemCarSlice = createSlice({
   name: "itemCar",
-  initialState: { list: [] },
+  initialState,
   reducers: {
     setItemlist: (state, action) => {
-      state.list.push(action.payload);
+      state.push(action.payload);
+    },
+    editItemAmount: (state, action) => {
+      const { id, newAmount } = action.payload;
+      const foundItem = state.find((item) => item.id === id);
+      if (foundItem) {
+        foundItem.amount = newAmount;
+      }
     },
     deleteItemlist: (state, action) => {
-      state.list.splice(action.payload, 1);
+      state.splice(action.payload, 1);
     },
   },
 });
 
-export const { setItemlist, deleteItemlist } = itemCarSlice.actions;
+export const { setItemlist, editItemAmount, deleteItemlist } =
+  itemCarSlice.actions;
 
 export default itemCarSlice.reducer;

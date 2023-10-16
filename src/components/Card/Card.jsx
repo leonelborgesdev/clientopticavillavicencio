@@ -3,6 +3,7 @@ import "./Card.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setItemlist } from "../../store/slices/itemCar";
 import { setCarObj } from "../../store/slices/Car";
+import { v4 as uuid } from "uuid";
 
 export const Card = ({ product }) => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ export const Card = ({ product }) => {
           className="btn btn-success"
           onClick={() => {
             handleComprar({
+              id: uuid(),
               id_product: product.id,
               amount: 1,
               subtotal: product.precio,
