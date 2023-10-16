@@ -9,7 +9,7 @@ export const Citas = () => {
       <Nav />
       <h2>Citas</h2>
       {appointments.length > 0 && (
-        <table className="table table-stripe">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>Nro</th>
