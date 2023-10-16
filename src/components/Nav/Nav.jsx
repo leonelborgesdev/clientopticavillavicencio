@@ -5,7 +5,7 @@ import "./Nav.css";
 export const Nav = () => {
   return (
     <div className="container_nav">
-      <Link to={"/"}>Home</Link>
+      <Link to={"/"}>Inicio</Link>
       <Link to={"/tienda"}>Tienda</Link>
       <Link to={"/cliente"}>Cliente</Link>
       <Link to={"/citas"}>Citas</Link>
