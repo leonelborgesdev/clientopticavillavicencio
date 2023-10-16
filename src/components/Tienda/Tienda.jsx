@@ -102,7 +102,13 @@ export const Tienda = () => {
             <h3>{client.obj.nombre ? client.obj.nombre : "--"}</h3>
             <h3>Cel/Telf:</h3>
             <h3>{client.obj.celular ? client.obj.celular : "--"}</h3>
-            <button>Buscar Cliente</button>
+            <button
+              onClick={() => {
+                navigate("/clientes");
+              }}
+            >
+              Buscar Cliente
+            </button>
             <button
               onClick={() => {
                 navigate("/receta");
