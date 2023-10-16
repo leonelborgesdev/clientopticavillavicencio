@@ -127,7 +127,7 @@ export const Tienda = () => {
                 <h3>{recipe.obj.fecha}</h3>
               </div>
               <h4>Lejos:</h4>
-              <table border={"1px"}>
+              <table className="table table-striped">
                 <thead>
                   <tr>
                     <th></th>
@@ -181,15 +181,15 @@ export const Tienda = () => {
           )}
 
           <div className="container_carrito_tabla">
-            <table border={"1px"}>
+            <table border={"1px"} className="table table-striped">
               <thead>
                 <tr>
-                  <th>N°</th>
-                  <th>Descripcion</th>
-                  <th>Marca</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
-                  <th>Botones</th>
+                  <th scope="col">N°</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Botones</th>
                 </tr>
               </thead>
               <tbody>
