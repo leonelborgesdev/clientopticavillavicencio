@@ -15,6 +15,7 @@ export const Clientes = () => {
     const fecha_mayor = new Date("01/01/1024");
     dispatch(setRecipeObj({}));
     recipes.map((recipe) => {
+      console.log(recipe);
       if (
         recipe.id_client === cliente.id &&
         new Date(recipe.fecha) > fecha_mayor
