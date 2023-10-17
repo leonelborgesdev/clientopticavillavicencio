@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initializeConnect } from "react-redux/es/components/connect";
 
 const initialState = [];
 

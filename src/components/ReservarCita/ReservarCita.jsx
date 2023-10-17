@@ -17,7 +17,6 @@ export const ReservarCita = () => {
   };
   const handleChangeAppointment = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setAppointment({ ...appointment, [name]: value });
   };
   const handleReservar = () => {
