@@ -11,6 +11,7 @@ export const Receta = () => {
   const [recipe, setRecipe] = useState({
     id: uuid(),
     id_client: client.obj.id,
+    client: client.obj,
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();

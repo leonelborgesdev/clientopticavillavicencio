@@ -1,12 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./Recetas.css";
+import { setRecipeObj } from "../../store/slices/recipe";
+import { setClientObj } from "../../store/slices/client";
 
 export const Recetas = () => {
   //   const { recipes } = useSelector((state) => state);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes);
+  const handleSelecc = (receta) => {
+    dispatch(setRecipeObj(receta));
+    dispatch(setClientObj(receta.client));
+    navigate("/tienda");
+  };
   return (
     <div>
       <Link to={"/tienda"}>Volver</Link>
@@ -36,7 +44,11 @@ export const Recetas = () => {
                 <td>{receta.doctor}</td>
                 <td>{receta.fecha}</td>
                 <td>
-                  <input type="radio" name="recipe" />
+                  <input
+                    type="radio"
+                    name="recipe"
+                    onClick={() => handleSelecc(receta)}
+                  />
                 </td>
               </tr>
             );
