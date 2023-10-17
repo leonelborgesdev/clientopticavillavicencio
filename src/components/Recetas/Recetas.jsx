@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Recetas.css";
 
 export const Recetas = () => {
   //   const { recipes } = useSelector((state) => state);
+  const navigate = useNavigate();
   const recipes = useSelector((state) => state.recipes);
   return (
     <div>
@@ -14,7 +15,7 @@ export const Recetas = () => {
         <h4>Cliente</h4>
         <input type="text" />
         <button>Buscar</button>
-        <button>Nueva Receta</button>
+        <button onClick={() => navigate("/receta")}>Nueva Receta</button>
       </div>
       <table border={"1px"} className="table table-hover">
         <thead>
