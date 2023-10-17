@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Receta.css";
 import { setRecipeList } from "../../store/slices/recipes";
 import { setRecipeObj } from "../../store/slices/recipe";
+import { v4 as uuid } from "uuid";
 
 export const Receta = () => {
   const client = useSelector((state) => state.client);
@@ -13,11 +14,9 @@ export const Receta = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setRecipe({ ...recipe, [name]: value });
-    console.log(recipe);
   };
   const handleSave = () => {
     // setRecipe({ ...recipe, ["id_client"]: client.obj.id });
-    console.log(recipe);
     dispatch(setRecipeObj(recipe));
     dispatch(setRecipeList(recipe));
     navigate("/tienda");

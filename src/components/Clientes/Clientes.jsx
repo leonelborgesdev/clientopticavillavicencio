@@ -2,14 +2,26 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setClientObj } from "../../store/slices/client";
+import { setRecipeObj } from "../../store/slices/recipe";
 
 export const Clientes = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const customers = useSelector((state) => state.customers);
   const client = useSelector((state) => state.client);
-  const handleSelecClient = (client) => {
-    dispatch(setClientObj(client));
+  const recipes = useSelector((state) => state.recipes);
+  const handleSelecClient = (cliente) => {
+    dispatch(setClientObj(cliente));
+    const fecha_mayor = new Date("01/01/1024");
+    dispatch(setRecipeObj({}));
+    recipes.map((recipe) => {
+      if (
+        recipe.id_client === cliente.id &&
+        new Date(recipe.fecha) > fecha_mayor
+      ) {
+        dispatch(setRecipeObj(recipe));
+      }
+    });
     navigate("/tienda");
   };
   return (
