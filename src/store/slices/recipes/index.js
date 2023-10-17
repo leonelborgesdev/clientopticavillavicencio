@@ -34,7 +34,7 @@ const initialState = [
     eje_oi_lejos: "23",
     esf_od_lejos: "24",
     esf_oi_lejos: "25",
-    fecha: "01/01/2023",
+    fecha: "02/02/2023",
     id_client: 1,
   },
 ];

@@ -8,12 +8,16 @@ import { v4 as uuid } from "uuid";
 
 export const Receta = () => {
   const client = useSelector((state) => state.client);
-  const [recipe, setRecipe] = useState({ id_client: client.obj.id });
+  const [recipe, setRecipe] = useState({
+    id: uuid(),
+    id_client: client.obj.id,
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setRecipe({ ...recipe, [name]: value });
+    console.log(recipe);
   };
   const handleSave = () => {
     // setRecipe({ ...recipe, ["id_client"]: client.obj.id });

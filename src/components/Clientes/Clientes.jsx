@@ -12,7 +12,7 @@ export const Clientes = () => {
   const recipes = useSelector((state) => state.recipes);
   const handleSelecClient = (cliente) => {
     dispatch(setClientObj(cliente));
-    const fecha_mayor = new Date("01/01/1024");
+    let fecha_mayor = new Date("01/01/1024");
     dispatch(setRecipeObj({}));
     recipes.map((recipe) => {
       console.log(recipe);
@@ -20,6 +20,7 @@ export const Clientes = () => {
         recipe.id_client === cliente.id &&
         new Date(recipe.fecha) > fecha_mayor
       ) {
+        fecha_mayor = new Date(recipe.fecha);
         dispatch(setRecipeObj(recipe));
       }
     });
