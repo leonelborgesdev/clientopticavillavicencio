@@ -12,6 +12,7 @@ const initialState = [
     esf_oi_lejos: "4",
     fecha: "01/01/2023",
     id_client: 3,
+    client: { id: 3, nombre: "Lucas" },
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const initialState = [
     esf_oi_lejos: "10",
     fecha: "05/05/2023",
     id_client: 3,
+    client: { id: 3, nombre: "Lucas" },
   },
   {
     id: 3,
@@ -36,6 +38,7 @@ const initialState = [
     esf_oi_lejos: "25",
     fecha: "02/02/2023",
     id_client: 1,
+    client: { id: 1, nombre: "Carlos" },
   },
 ];
 

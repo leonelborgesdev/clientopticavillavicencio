@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import "./Recetas.css";
 
 export const Recetas = () => {
   //   const { recipes } = useSelector((state) => state);
@@ -9,7 +10,12 @@ export const Recetas = () => {
     <div>
       <Link to={"/tienda"}>Volver</Link>
       <h2>Recetas</h2>
-
+      <div className="container_receta_cliente">
+        <h4>Cliente</h4>
+        <input type="text" />
+        <button>Buscar</button>
+        <button>Nueva Receta</button>
+      </div>
       <table border={"1px"} className="table table-hover">
         <thead>
           <tr>
@@ -25,7 +31,7 @@ export const Recetas = () => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>Cliente</td>
+                <td>{receta.client.nombre}</td>
                 <td>{receta.doctor}</td>
                 <td>{receta.fecha}</td>
                 <td>

@@ -1,0 +1,7 @@
+.container_receta_cliente{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin: 10px;
+}
