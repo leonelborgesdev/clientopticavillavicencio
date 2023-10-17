@@ -102,7 +102,7 @@ export const Tienda = () => {
           Carrito: {itemCar.length}
         </h2>
       </div>
-      {carritoVisible && itemCar.length > 0 && (
+      {carritoVisible && (
         <div
           className="container_carrito"
           id={carritoVisible === true ? "carritoVisible" : "carritoNoVisible"}
@@ -125,7 +125,7 @@ export const Tienda = () => {
               <button
                 className="btn btn-info"
                 onClick={() => {
-                  navigate("/receta");
+                  navigate("/recetas");
                 }}
               >
                 Receta
@@ -194,89 +194,92 @@ export const Tienda = () => {
               )}
             </div>
           )}
-
-          <div className="container_carrito_tabla">
-            <table border="1px" className="table table-striped">
-              <thead className="thead-dark">
-                <tr>
-                  <th scope="col">N°</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Marca</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Botones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {itemCar.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <th scope="row">{index + 1}</th>
-                      <td>{item.product.descripcion}</td>
-                      <td>{item.product.marca}</td>
-                      <td>{item.amount}</td>
-                      <td>{item.product.precio * item.amount}</td>
-                      <td className="container_item_buttoms">
-                        <button
-                          className="btn btn-danger btn-sm"
-                          onClick={() =>
-                            handleEditAmount("-", item.amount, item.id)
-                          }
-                        >
-                          -
-                        </button>
-                        <button
-                          className="btn btn-success btn-sm"
-                          onClick={() =>
-                            handleEditAmount("+", item.amount, item.id)
-                          }
-                        >
-                          +
-                        </button>
-                        <button
-                          className="btn btn-primary btn-sm"
-                          onClick={() =>
-                            handelEliminar(index, item.product.precio)
-                          }
-                        >
-                          x
-                        </button>
-                      </td>
+          {itemCar.length > 0 && (
+            <>
+              <div className="container_carrito_tabla">
+                <table border="1px" className="table table-striped">
+                  <thead className="thead-dark">
+                    <tr>
+                      <th scope="col">N°</th>
+                      <th scope="col">Descripcion</th>
+                      <th scope="col">Marca</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Botones</th>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <div className="container_total">
-            <div>
-              <h4>Descuento: </h4>
-              <input
-                type="text"
-                defaultValue={car.obj.descuento}
-                onChange={handleChangeDiscount}
-              />
-              <button
-                className="btn btn-warning"
-                onClick={() => handeltipoDescuento()}
-              >
-                {tipoDescuento ? "%" : "n"}
-              </button>
-              <h4>
-                {car.obj.tipo_descuento === "%"
-                  ? car.obj.suma * (car.obj.descuento / 100)
-                  : car.obj.descuento}
-              </h4>
-            </div>
-            <div>
-              <h4>Total: </h4>
-              <h4>
-                {car.obj.tipo_descuento === "%"
-                  ? car.obj.suma - car.obj.suma * (car.obj.descuento / 100)
-                  : car.obj.suma - car.obj.descuento}
-              </h4>
-            </div>
-          </div>
+                  </thead>
+                  <tbody>
+                    {itemCar.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <th scope="row">{index + 1}</th>
+                          <td>{item.product.descripcion}</td>
+                          <td>{item.product.marca}</td>
+                          <td>{item.amount}</td>
+                          <td>{item.product.precio * item.amount}</td>
+                          <td className="container_item_buttoms">
+                            <button
+                              className="btn btn-danger btn-sm"
+                              onClick={() =>
+                                handleEditAmount("-", item.amount, item.id)
+                              }
+                            >
+                              -
+                            </button>
+                            <button
+                              className="btn btn-success btn-sm"
+                              onClick={() =>
+                                handleEditAmount("+", item.amount, item.id)
+                              }
+                            >
+                              +
+                            </button>
+                            <button
+                              className="btn btn-primary btn-sm"
+                              onClick={() =>
+                                handelEliminar(index, item.product.precio)
+                              }
+                            >
+                              x
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <div className="container_total">
+                <div>
+                  <h4>Descuento: </h4>
+                  <input
+                    type="text"
+                    defaultValue={car.obj.descuento}
+                    onChange={handleChangeDiscount}
+                  />
+                  <button
+                    className="btn btn-warning"
+                    onClick={() => handeltipoDescuento()}
+                  >
+                    {tipoDescuento ? "%" : "n"}
+                  </button>
+                  <h4>
+                    {car.obj.tipo_descuento === "%"
+                      ? car.obj.suma * (car.obj.descuento / 100)
+                      : car.obj.descuento}
+                  </h4>
+                </div>
+                <div>
+                  <h4>Total: </h4>
+                  <h4>
+                    {car.obj.tipo_descuento === "%"
+                      ? car.obj.suma - car.obj.suma * (car.obj.descuento / 100)
+                      : car.obj.suma - car.obj.descuento}
+                  </h4>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
       <div className="container_products">

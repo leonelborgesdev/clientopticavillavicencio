@@ -7,6 +7,7 @@ import { ReservarCita } from "./components/ReservarCita/ReservarCita";
 import { Cliente } from "./components/Cliente/Cliente";
 import { Receta } from "./components/Receta/Receta";
 import { Clientes } from "./components/Clientes/Clientes";
+import { Recetas } from "./components/Recetas/Recetas";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/cliente" element={<Cliente />} />
           <Route path="/clientes" element={<Clientes />} />
           <Route path="/receta" element={<Receta />} />
+          <Route path="/recetas" element={<Recetas />} />
         </Routes>
       </BrowserRouter>
     </div>
