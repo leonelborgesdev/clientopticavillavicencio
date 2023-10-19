@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setClientObj } from "../../store/slices/client";
 import { setRecipeObj } from "../../store/slices/recipe";
+import { getAllClients } from "../../store/slices/customers";
 
 export const Clientes = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const customers = useSelector((state) => state.customers);
+  useEffect(() => {
+    dispatch(getAllClients());
+  }, []);
+  const customers = useSelector((state) => state.customers.list);
   const client = useSelector((state) => state.client);
   const recipes = useSelector((state) => state.recipes);
   const handleSelecClient = (cliente) => {
