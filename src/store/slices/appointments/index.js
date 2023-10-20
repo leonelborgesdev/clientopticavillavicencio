@@ -26,7 +26,6 @@ export const getAllAppointments = () => {
     const response = await fetch(`${api}/cita`);
     if (response) {
       const data = await response.json();
-      console.log(data);
       dispatch(setListAppointmentsList(data.listaCitas));
     }
   };

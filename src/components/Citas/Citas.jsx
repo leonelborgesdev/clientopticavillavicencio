@@ -27,7 +27,7 @@ export const Citas = () => {
           <tbody>
             {appointments.map((appointment, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{appointment.Cliente.nombre}</td>
                   <td>{appointment.Cliente.celular}</td>
