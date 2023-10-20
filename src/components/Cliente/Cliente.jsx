@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { setClientObj } from "../../store/slices/client";
-import { setCustomerList } from "../../store/slices/customers";
+import { fetchAddClient } from "../../store/slices/client";
 import { v4 as uuid } from "uuid";
 
 export const Cliente = () => {
@@ -14,8 +13,7 @@ export const Cliente = () => {
     setCliente({ ...cliente, [name]: value });
   };
   const handleSave = () => {
-    dispatch(setClientObj(cliente));
-    dispatch(setCustomerList(cliente));
+    dispatch(fetchAddClient(cliente));
     navigate("/");
   };
   return (

@@ -26,12 +26,18 @@ export const { setCustomerList, setListCustomer } = customersSlices.actions;
 
 export const getAllClients = () => {
   return async function (dispatch) {
-    const response = await fetch(`http://localhost:3000/cliente`);
+    const response = await fetch(`${api}/cliente`);
     if (response) {
       const data = await response.json();
       console.log("cliente", data.list_clients);
       dispatch(setListCustomer(data.list_clients));
     }
+  };
+};
+
+export const createClient = () => {
+  return async function (dispatch) {
+    const response = await fetch(``);
   };
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { setClientObj } from "../../store/slices/client";
+import { fetchAddClient } from "../../store/slices/client";
 import { v4 as uuid } from "uuid";
 import { setAppointmentList } from "../../store/slices/appointments";
 
@@ -12,7 +12,6 @@ export const ReservarCita = () => {
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setCliente({ ...cliente, [name]: value });
   };
   const handleChangeAppointment = (e) => {
@@ -20,7 +19,7 @@ export const ReservarCita = () => {
     setAppointment({ ...appointment, [name]: value });
   };
   const handleReservar = () => {
-    dispatch(setClientObj(cliente));
+    dispatch(fetchAddClient(cliente));
     // appointment["id_cliente"] = cliente.id;
     appointment["id_cliente"] = cliente;
     dispatch(setAppointmentList(appointment));
