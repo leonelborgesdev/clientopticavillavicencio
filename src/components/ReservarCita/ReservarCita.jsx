@@ -3,11 +3,14 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchAddClient } from "../../store/slices/client";
 import { v4 as uuid } from "uuid";
-import { setAppointmentList } from "../../store/slices/appointments";
+import { fetchAddAppointment } from "../../store/slices/appointments";
 
 export const ReservarCita = () => {
   const [cliente, setCliente] = useState({ id: uuid() });
-  const [appointment, setAppointment] = useState({ id: uuid() });
+  const [appointment, setAppointment] = useState({
+    id: uuid(),
+    ClienteId: cliente.id,
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -21,8 +24,7 @@ export const ReservarCita = () => {
   const handleReservar = () => {
     dispatch(fetchAddClient(cliente));
     // appointment["id_cliente"] = cliente.id;
-    appointment["id_cliente"] = cliente;
-    dispatch(setAppointmentList(appointment));
+    dispatch(fetchAddAppointment(appointment));
     navigate("/");
   };
   return (
