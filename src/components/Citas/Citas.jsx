@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Nav } from "../Nav/Nav";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllAppointments } from "../../store/slices/appointments";
 
 export const Citas = () => {
-  const appointments = useSelector((state) => state.appointments);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllAppointments());
+  }, []);
+  const appointments = useSelector((state) => state.appointments.list);
   return (
     <div>
       <Nav />
@@ -24,8 +29,8 @@ export const Citas = () => {
               return (
                 <tr>
                   <td>{index + 1}</td>
-                  <td>{appointment.id_cliente.nombre}</td>
-                  <td>{appointment.id_cliente.celular}</td>
+                  <td>{appointment.Cliente.nombre}</td>
+                  <td>{appointment.Cliente.celular}</td>
                   <td>{appointment.hora}</td>
                   <td>{appointment.fecha}</td>
                 </tr>

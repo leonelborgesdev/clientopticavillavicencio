@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { api } from "../../api";
 
-const initialState = [];
+const initialState = { list: [] };
 
 export const appointmentsSlices = createSlice({
   name: "appointments",
@@ -16,9 +16,21 @@ export const appointmentsSlices = createSlice({
   },
 });
 
-export const { setAppointmentList } = appointmentsSlices.actions;
+export const { setAppointmentList, setListAppointmentsList } =
+  appointmentsSlices.actions;
 
 export default appointmentsSlices.reducer;
+
+export const getAllAppointments = () => {
+  return async function (dispatch) {
+    const response = await fetch(`${api}/cita`);
+    if (response) {
+      const data = await response.json();
+      console.log(data);
+      dispatch(setListAppointmentsList(data.listaCitas));
+    }
+  };
+};
 
 export const fetchAddAppointment = (appointment) => {
   return async function (dispatch) {
@@ -29,6 +41,6 @@ export const fetchAddAppointment = (appointment) => {
       },
       body: JSON.stringify(appointment),
     });
-    console.log(response, appointment);
+    // console.log(response, appointment);
   };
 };

@@ -21,8 +21,8 @@ export const ReservarCita = () => {
     const { name, value } = e.target;
     setAppointment({ ...appointment, [name]: value });
   };
-  const handleReservar = () => {
-    dispatch(fetchAddClient(cliente));
+  const handleReservar = async () => {
+    await dispatch(fetchAddClient(cliente));
     // appointment["id_cliente"] = cliente.id;
     dispatch(fetchAddAppointment(appointment));
     navigate("/");
