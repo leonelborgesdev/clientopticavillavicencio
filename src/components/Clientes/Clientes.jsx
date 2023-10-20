@@ -18,16 +18,17 @@ export const Clientes = () => {
     dispatch(setClientObj(cliente));
     let fecha_mayor = new Date("01/01/1024");
     dispatch(setRecipeObj({}));
-    recipes.map((recipe) => {
-      console.log(recipe);
-      if (
-        recipe.id_client === cliente.id &&
-        new Date(recipe.fecha) > fecha_mayor
-      ) {
-        fecha_mayor = new Date(recipe.fecha);
-        dispatch(setRecipeObj(recipe));
-      }
-    });
+    if (recipes.length > 0)
+      recipes.map((recipe) => {
+        console.log(recipe);
+        if (
+          recipe.id_client === cliente.id &&
+          new Date(recipe.fecha) > fecha_mayor
+        ) {
+          fecha_mayor = new Date(recipe.fecha);
+          dispatch(setRecipeObj(recipe));
+        }
+      });
     navigate("/tienda");
   };
   return (

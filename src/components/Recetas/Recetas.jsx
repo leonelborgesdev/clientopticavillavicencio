@@ -9,7 +9,7 @@ export const Recetas = () => {
   //   const { recipes } = useSelector((state) => state);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const recipes = useSelector((state) => state.recipes);
+  const recipes = useSelector((state) => state.recipes.list);
   const handleSelecc = (receta) => {
     dispatch(setRecipeObj(receta));
     dispatch(setClientObj(receta.client));
