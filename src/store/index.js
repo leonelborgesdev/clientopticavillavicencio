@@ -7,6 +7,7 @@ import recipeReducer from "./slices/recipe";
 import customersReducer from "./slices/customers";
 import recipesReducer from "./slices/recipes";
 import appointmentReducer from "./slices/appointments";
+import imagesReducer from "./slices/images";
 
 export default configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export default configureStore({
     recipe: recipeReducer,
     recipes: recipesReducer,
     products: productsReducer,
+    images: imagesReducer,
     itemCar: itemCarReducer,
     car: carReducer,
   },
