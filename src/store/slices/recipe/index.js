@@ -17,10 +17,10 @@ export default recipeSlice.reducer;
 
 export const fetchAddRecipe = (receta) => {
   return async function (dispatch) {
-    const response = await fetch(`${api}/recetas`, {
+    const response = await fetch(`${api}/receta`, {
       method: "POST",
       headers: {
-        "Content/type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(receta),
     });

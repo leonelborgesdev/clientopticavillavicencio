@@ -4,25 +4,27 @@ import { Link, useNavigate } from "react-router-dom";
 import { setClientObj } from "../../store/slices/client";
 import { setRecipeObj } from "../../store/slices/recipe";
 import { getAllClients } from "../../store/slices/customers";
+import { getAllRecipes } from "../../store/slices/recipes";
 
 export const Clientes = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(getAllClients());
+    dispatch(getAllRecipes());
   }, []);
   const customers = useSelector((state) => state.customers.list);
   const client = useSelector((state) => state.client);
-  const recipes = useSelector((state) => state.recipes);
+  const recipes = useSelector((state) => state.recipes.list);
   const handleSelecClient = (cliente) => {
     dispatch(setClientObj(cliente));
     let fecha_mayor = new Date("01/01/1024");
     dispatch(setRecipeObj({}));
     if (recipes.length > 0)
       recipes.map((recipe) => {
-        console.log(recipe);
+        console.log("recipe", recipe);
         if (
-          recipe.id_client === cliente.id &&
+          recipe.ClienteId === cliente.id &&
           new Date(recipe.fecha) > fecha_mayor
         ) {
           fecha_mayor = new Date(recipe.fecha);
