@@ -35,10 +35,4 @@ export const getAllClients = () => {
   };
 };
 
-export const createClient = () => {
-  return async function (dispatch) {
-    const response = await fetch(``);
-  };
-};
-
 export default customersSlices.reducer;

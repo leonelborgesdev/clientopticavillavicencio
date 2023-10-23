@@ -7,13 +7,13 @@ export const recipesSlices = createSlice({
   name: "recipe",
   initialState,
   reducers: {
-    setRecipeList: (state, action) => {
-      state.list.push(action.payload);
+    setListRecipes: (state, action) => {
+      state.list = action.payload;
     },
   },
 });
 
-export const { setRecipeList } = recipesSlices.actions;
+export const { setListRecipes } = recipesSlices.actions;
 
 export default recipesSlices.reducer;
 
@@ -22,7 +22,7 @@ export const getAllRecipes = () => {
     const response = await fetch(`${api}/receta`);
     if (response) {
       const data = await response.json();
-      console.log(data);
+      dispatch(setListRecipes(data.recetas));
     }
   };
 };

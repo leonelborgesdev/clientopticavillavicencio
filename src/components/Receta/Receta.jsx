@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./Receta.css";
-import { setRecipeList } from "../../store/slices/recipes";
 import { setRecipeObj } from "../../store/slices/recipe";
 import { v4 as uuid } from "uuid";
 
@@ -23,7 +22,7 @@ export const Receta = () => {
   const handleSave = () => {
     // setRecipe({ ...recipe, ["id_client"]: client.obj.id });
     dispatch(setRecipeObj(recipe));
-    dispatch(setRecipeList(recipe));
+    // dispatch(setRecipeList(recipe));
     navigate("/tienda");
   };
   return (

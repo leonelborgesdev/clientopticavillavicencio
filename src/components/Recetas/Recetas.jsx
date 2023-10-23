@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./Recetas.css";
 import { setRecipeObj } from "../../store/slices/recipe";
 import { setClientObj } from "../../store/slices/client";
+import { getAllRecipes } from "../../store/slices/recipes";
 
 export const Recetas = () => {
   //   const { recipes } = useSelector((state) => state);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllRecipes());
+  }, []);
   const recipes = useSelector((state) => state.recipes.list);
   const handleSelecc = (receta) => {
     dispatch(setRecipeObj(receta));
-    dispatch(setClientObj(receta.client));
+    dispatch(setClientObj(receta.Cliente));
     navigate("/tienda");
   };
   return (
@@ -40,7 +44,7 @@ export const Recetas = () => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{receta.client.nombre}</td>
+                <td>{receta.Cliente.nombre}</td>
                 <td>{receta.doctor}</td>
                 <td>{receta.fecha}</td>
                 <td>
