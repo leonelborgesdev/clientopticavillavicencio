@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from "../Card/Card";
 import "./Tienda.css";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteItemlist, editItemAmount } from "../../store/slices/itemCar";
 import { setCarObj } from "../../store/slices/Car";
+import { getAllProducts } from "../../store/slices/products";
 
 const tabla_cerca = (recipe) => {
   return (
@@ -36,6 +37,11 @@ const tabla_cerca = (recipe) => {
 };
 
 export const Tienda = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
   const products = useSelector((state) => state.products);
   const itemCar = useSelector((state) => state.itemCar);
   const client = useSelector((state) => state.client);
@@ -43,8 +49,6 @@ export const Tienda = () => {
   const car = useSelector((state) => state.car);
   const [carritoVisible, setCarritoVisible] = useState(false);
   const [tipoDescuento, setTipoDescuento] = useState(true);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const handelEliminar = (posicion, precioItem) => {
     dispatch(deleteItemlist(posicion));
     dispatch(setCarObj({ ...car.obj, ["suma"]: car.obj.suma - precioItem }));
