@@ -26,4 +26,22 @@ export const getAllImages = () => {
   };
 };
 
+export const fetchAddImage = (image) => {
+  return async function (dispatch) {
+    const formData = new FormData();
+    for (const property in image) {
+      formData.append(property, image[property]);
+    }
+    console.log("formData", formData);
+    const response = await fetch(`${api}/image`, {
+      method: "POST",
+      body: formData,
+    });
+    if (response) {
+      const data = await response.json();
+      console.log(data);
+    }
+  };
+};
+
 export default imagesSlices.reducer;

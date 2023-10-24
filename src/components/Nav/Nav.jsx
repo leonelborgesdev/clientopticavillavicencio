@@ -7,6 +7,7 @@ export const Nav = () => {
     <div className="container_nav">
       <Link to={"/"}>Inicio</Link>
       <Link to={"/tienda"}>Tienda</Link>
+      <Link to={"/registrarproducto"}>Registrar Producto</Link>
       <Link to={"/cliente"}>Cliente</Link>
       <Link to={"/citas"}>Citas</Link>
       <Link to={"/cita"}>Reservar Cita</Link>

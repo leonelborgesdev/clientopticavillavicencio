@@ -8,6 +8,7 @@ import { Cliente } from "./components/Cliente/Cliente";
 import { Receta } from "./components/Receta/Receta";
 import { Clientes } from "./components/Clientes/Clientes";
 import { Recetas } from "./components/Recetas/Recetas";
+import { CrearProductos } from "./components/CrearProductos/CrearProductos";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/clientes" element={<Clientes />} />
           <Route path="/receta" element={<Receta />} />
           <Route path="/recetas" element={<Recetas />} />
+          <Route path="/registrarproducto" element={<CrearProductos />} />
         </Routes>
       </BrowserRouter>
     </div>
