@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, FormGroup, Input } from "reactstrap";
 import { v4 as uuid } from "uuid";
 import { fetchAddImage } from "../../store/slices/images";
@@ -8,6 +8,7 @@ import { fetchAddImage } from "../../store/slices/images";
 export const CrearProductos = () => {
   const [image, setImage] = useState({ id: uuid() });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const uploadImage = async (e) => {
     const file = e.target.files;
     setImage({ ...image, ["image"]: file[0] });
@@ -15,6 +16,7 @@ export const CrearProductos = () => {
   };
   const handleSave = () => {
     dispatch(fetchAddImage(image));
+    navigate("/");
   };
   return (
     <div>
