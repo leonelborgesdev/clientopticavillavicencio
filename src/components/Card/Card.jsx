@@ -40,7 +40,8 @@ export const Card = ({ product }) => {
       </div>
       <h2>{product.marca && product.marca}</h2>
       <h2>{product.descripcion}</h2>
-      <h2>{product.precio}</h2>
+      <h4>Precio: {product.precio}</h4>
+      <h4>Stock: {product.stock}</h4>
       <div>
         <button
           className="btn btn-success"
