@@ -1,0 +1,7 @@
+.container_lista_clientes{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+    height: 30px;
+}

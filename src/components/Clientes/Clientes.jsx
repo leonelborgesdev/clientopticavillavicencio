@@ -5,6 +5,7 @@ import { setClientObj } from "../../store/slices/client";
 import { setRecipeObj } from "../../store/slices/recipe";
 import { getAllClients } from "../../store/slices/customers";
 import { getAllRecipes } from "../../store/slices/recipes";
+import "./Clientes.css";
 
 export const Clientes = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,17 @@ export const Clientes = () => {
     <div>
       <Link to={"/tienda"}>Volver</Link>
       <h1>Clientes</h1>
+      <div className="container_lista_clientes">
+        <h3>Nombre</h3>
+        <input type="text" />
+        <button
+          onClick={() => {
+            navigate("/cliente");
+          }}
+        >
+          Registrar Cliente
+        </button>
+      </div>
       <table className="table table-hover">
         <thead className="thead-dark">
           <tr>

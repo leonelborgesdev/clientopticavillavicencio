@@ -14,11 +14,12 @@ export const Cliente = () => {
   };
   const handleSave = () => {
     dispatch(fetchAddClient(cliente));
-    navigate("/");
+    navigate("/tienda");
   };
   return (
     <div>
       <Link to="/">Volver</Link>
+      <Link to="/tienda">Tienda</Link>
       <h1>Registrar Cliente</h1>
       <h3>Nommbre:</h3>
       <input type="text" name="nombre" onChange={handleChange} />
