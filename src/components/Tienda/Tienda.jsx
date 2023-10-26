@@ -5,7 +5,10 @@ import "./Tienda.css";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteItemlist, editItemAmount } from "../../store/slices/itemCar";
 import { setCarObj } from "../../store/slices/Car";
-import { getAllProducts } from "../../store/slices/products";
+import {
+  getAllProducts,
+  getProductsByDescription,
+} from "../../store/slices/products";
 
 const tabla_cerca = (recipe) => {
   return (
@@ -84,6 +87,13 @@ export const Tienda = () => {
       setCarritoVisible(true);
     }
   };
+  const handleFilter = (e) => {
+    const { value } = e.target;
+    if (value) {
+      // console.log(value);
+      dispatch(getProductsByDescription(value));
+    }
+  };
   return (
     <div>
       <div className="container_nav_tienda">
@@ -100,7 +110,7 @@ export const Tienda = () => {
           <option value="">Marca</option>
           <option value="">Precio</option>
         </select>
-        <input type="text" />
+        <input type="text" onChange={handleFilter} />
         <button>Buscar</button>
         <h2 className="icono_carrito" onClick={handleCarVisible}>
           Carrito: {itemCar.length}
@@ -289,7 +299,7 @@ export const Tienda = () => {
       <div className="container_products">
         <h1>Tienda</h1>
         <div className="contanier_cards">
-          {products.list.length > 0 ? (
+          {products.list?.length > 0 ? (
             products.list.map((product) => {
               return <Card product={product} key={product.id} />;
             })

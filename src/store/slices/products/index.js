@@ -31,9 +31,11 @@ export const getAllProducts = () => {
 
 export const getProductsByDescription = (descripcion) => {
   return async function (dispatch) {
+    console.log("llego");
     const response = await fetch(`${api}/producto?descripcion=${descripcion}`);
     if (response) {
       const data = await response.json();
+      console.log(data);
       dispatch(setListProducts(data.list_products));
     }
   };
